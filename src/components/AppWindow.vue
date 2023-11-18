@@ -59,7 +59,7 @@
                 <h2 class="h2">Оптимизация</h2>
               </div>
             </Vue3Marquee>
-            <div class="container steps-container">
+            <div class="container steps-container mobile">
               <div class="cards-row">
                 <div class="step-card-dark">
                   <IconCalculator  data-aos="fade-up" color="#3987da" :size="50" stroke-width="2" />
@@ -89,6 +89,32 @@
                 </div>
               </div>
             </div>
+            <div class="container steps-container desktop">
+                  <div class="step-card-dark">
+                    <IconCalculator  data-aos="fade-up" color="#3987da" :size="50" stroke-width="2" />
+                    <p class="terminal-text-dark" style="margin-top: 1rem;">
+                      Вводная бесплатная консультация
+                    </p>
+                  </div>
+                  <div class="step-card-dark">
+                    <IconSignature  data-aos="fade-up" color="#3987da" :size="50" stroke-width="2" />
+                    <p class="terminal-text-dark" style="margin-top: 1rem; font-size: 1.3rem;">
+                      Согласование ТЗ и заключение договора
+                    </p>
+                  </div>
+                  <div class="step-card-dark">
+                    <IconReceipt2  data-aos="fade-up" color="#3987da" :size="50" stroke-width="2 " />
+                    <p class="terminal-text-dark" style="margin-top: 1rem; font-size: 1.3rem;">
+                      Предоплата и последовательная разработка
+                    </p>
+                  </div>
+                  <div class="step-card-dark">
+                    <IconThumbUp  data-aos="fade-up" color="#3987da" :size="50" stroke-width="2" />
+                    <p class="terminal-text-dark" style="margin-top: 1rem; font-size: 1.3rem;">
+                      Сдача проекта и завершение обязательств
+                    </p>
+                  </div>
+              </div>
             </template>
             <template v-else-if="currentContent === 'feedback'">
               <form class="animate__animated animate__fadeInUp form-wrapper" @submit.prevent="submitFeedbackForm">
@@ -271,11 +297,11 @@
           </div>
           <div class="container terminal-container">
             <template v-if="currentContent === 'default-content'">
-              <form class="animate__animated animate__fadeInUp form-wrapper">
-                <h1 class="form-heading-light animate__animated animate__fadeInUp">Бесплатная консультация</h1>
-                <p class="form-subtext animate__animated animate__fadeInUp">В зависимости от приоритетных задач бизнеса, студия Rhizome предоставляет отдельные единицы команды на аутсорсинг процессов под вашим руководством. Расскажите о себе и ваших целях - и мы свяжемся с вами</p>
+              <form class="animate__animated animate__fadeIn form-wrapper">
+                <h1 class="form-heading-light animate__animated animate__fadeIn">Бесплатная консультация</h1>
+                <p class="form-subtext animate__animated animate__fadeIn">В зависимости от приоритетных задач бизнеса, студия Rhizome предоставляет отдельные единицы команды на аутсорсинг процессов под вашим руководством. Расскажите о себе и ваших целях - и мы свяжемся с вами</p>
                 <div class="container form-container">
-                  <div class="form-col1 animate__animated animate__fadeInUp">
+                  <div class="form-col1 animate__animated animate__fadeIn">
                     <label for="fullName">ФИО:</label>
                     <input type="text" v-model="reqData.name" id="fullName" name="fullName" required>
 
@@ -293,7 +319,7 @@
                       </a-radio-group>
                     </div>
                   </div>
-                  <div class="form-col2 animate__animated animate__fadeInUp">
+                  <div class="form-col2 animate__animated animate__fadeIn">
                     <label for="comments">Комментарии:</label>
                     <textarea v-model="reqData.context" id="comments" name="comments" rows="4"></textarea>
                     <input type="submit" value="Отправить" @click="send">
@@ -412,6 +438,29 @@ export default {
 
 </script>
 <style scoped>
+@media only screen and (max-width: 800px) {
+  .terminal-text-dark {
+    font-size: 1rem!important;
+  }
+  .terminal-container-dark {
+    justify-content: space-between!important;
+  }
+  .terminal-container-dark input, textarea {
+    background-color: #2f2f2f!important;
+    color: white!important;
+  }
+  .terminal-container-dark input[type="submit"] {
+    background-color: #3987da!important;
+  }
+  .terminal-container-dark :deep(:where(.css-dev-only-do-not-override-1qb1s0s).ant-radio-button-wrapper) {
+    background-color: transparent!important;
+    color: white;
+  }
+  .terminal-container-dark :deep(:where(.css-dev-only-do-not-override-1qb1s0s).ant-radio-button-wrapper-checked) {
+    background-color: #3987da!important;
+    color: white;
+  }
+}
 @media only screen and (max-width: 415px) {
   .terminal-uni {
     max-width: 90vw!important;
@@ -423,6 +472,12 @@ export default {
     font-size: 1rem!important;
   }
   .card-dark {
+  }
+  .mobile {
+    display: flex!important;
+  }
+  .desktop {
+    display: none!important;
   }
   .steps-container {
     //flex-wrap: wrap!important;
@@ -476,7 +531,30 @@ export default {
     flex-direction: column!important;
   }
 }
-
+.terminal-container-dark {
+  justify-content: space-between!important;
+}
+.terminal-container-dark input, textarea {
+  background-color: #2f2f2f!important;
+  color: white!important;
+}
+.terminal-container-dark input[type="submit"] {
+  background-color: #3987da!important;
+}
+.terminal-container-dark :deep(:where(.css-dev-only-do-not-override-1qb1s0s).ant-radio-button-wrapper) {
+  background-color: transparent!important;
+  color: white;
+}
+.terminal-container-dark :deep(:where(.css-dev-only-do-not-override-1qb1s0s).ant-radio-button-wrapper-checked) {
+  background-color: #3987da!important;
+  color: white;
+}
+.desktop {
+  display: flex!important;
+}
+.mobile {
+  display: none!important;
+}
 .radio-row {
   display: flex;
   justify-content: center;
@@ -530,12 +608,15 @@ input, select, textarea {
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: 1px solid rgba(39, 76, 119, 0.52);
+  border-radius: 16px;
   box-sizing: border-box;
   font-size: 16px;
 }
-
+input:focus-visible, select:focus-visible, textarea:focus-visible {
+  border: 1px solid rgba(39, 76, 119)!important;
+  border-radius: 16px;
+}
 .radio-group {
   margin-bottom: 15px;
 }
@@ -570,7 +651,7 @@ input[type="submit"] {
   color: #fff;
   padding: 10px 15px;
   border: none;
-  border-radius: 4px;
+  border-radius: 16px;
   cursor: pointer;
   font-size: 16px;
 }
@@ -906,7 +987,7 @@ font-size: 2.5rem;
   height: 100%;
   width: 100%;
   min-width: 30vw;
-  max-width: 50vw;
+  max-width: 45rem;
   min-height: 90vh;
 }
 .terminal-dark {
