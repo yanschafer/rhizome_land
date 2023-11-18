@@ -41,15 +41,15 @@ const wrapperCol = {
   span: 14,
 };
 
-const lenis = new Lenis({
-  duration: 1.1,
-  easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
-  direction: "vertical",
-  gestureDirection: "vertical",
-  smooth: true,
-  smoothTouch: true,
-  touchMultiplier: 2,
-});
+// const lenis = new Lenis({
+//   duration: 1.1,
+//   easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
+//   direction: "vertical",
+//   gestureDirection: "vertical",
+//   smooth: true,
+//   smoothTouch: true,
+//   touchMultiplier: 2,
+// });
 
 function raf(time) {
   lenis.raf(time);
@@ -98,30 +98,6 @@ const items = ref([
             <router-view @open-modal="showModal" />
           </transition>
         </div>
-        <!--    Footer area-->
-        <div class="footer">
-          <div class="e-mail-row">
-            <img class="logo-footer" src="@/assets/logo.svg" />
-          </div>
-          <div class="row e-mail-row">
-            adress@mail.com
-          </div>
-          <div class="row info-row">
-            <div class="col-1">
-              <span>Юридический адрес</span>
-              <span style="font-weight: 600">Rhizhome | 2023</span>
-            </div>
-            <div class="col-2">
-              <span>/</span>
-              <a href="#"><span>Политика обработки персональных данных</span></a>
-            </div>
-            <div class="col-3">
-              <a href="#"><span>Telegram</span></a>
-              <a href="#"><span>Whatsapp</span></a>
-            </div>
-          </div>
-        </div>
-        <div class="footer-fix"></div>
       </div>
     </div>
   </div>
@@ -164,7 +140,6 @@ const items = ref([
 }
 :deep(#app) {
   background: #e7ecef!important;
-  overflow-x: hidden;
   font-family: Point, sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
@@ -173,7 +148,6 @@ const items = ref([
 html, body {
   height: 100%;
   width: 100%;
-  overflow-x: hidden!important;
   background-color: #e7ecef;
 }
 @media screen and (max-width: 767px) {
@@ -289,6 +263,9 @@ html, body {
 }
 </style>
 <style>
+* {
+  scroll-behavior: smooth;
+}
 html, body {
   font-family: Point, sans-serif;
 }
@@ -347,6 +324,7 @@ label {
   color: white!important;
 }
 .footer {
+  padding: 3rem;
   height: 20rem;
   background-color: white!important;
 }
@@ -379,6 +357,7 @@ label {
 }
 .col-1 {
   align-items: flex-start;
+  opacity: 0.4;
 }
 .col-2 {
   align-items: center;
@@ -389,6 +368,7 @@ a {
 .footer-fix {
   height: 200px;
   background-color: white;
+  display: none;
 }
 .items-row {
   width: 100%;

@@ -7,9 +7,10 @@
       <img src="@/assets/logo.svg" alt="Logo" class="logo" />
       <div class="nav-container">
         <div class="menu-items-wrapper">
-          <a href="#" class="desktop-item">услуги</a>
-          <a href="#" class="desktop-item">контакты</a>
-          <a href="#" class="desktop-item" @click="openModal('universal')">команда</a>
+          <a href="#cases" class="desktop-item">кейсы</a>
+          <a href="#offers" class="desktop-item">услуги</a>
+          <a href="#contacts" class="desktop-item">контакты</a>
+          <a href="#team" class="desktop-item">команда</a>
         </div>
         <!-- Добавьте другие пункты меню по необходимости -->
         <button @click="handleTerminalClick('universal')" class="btn btn-primary">получить консультацию</button>
@@ -17,19 +18,22 @@
     </div>
 
     <!-- Mobile Navbar -->
-    <div v-else class="navbar-mobile">
-      <div @click="toggleSidebar" class="burger-icon">☰</div>
+    <div v-else class="navbar-mobile animate__animated animate__fadeInUp animate__delay-2s">
+      <div @click="toggleSidebar" class="burger-icon">
+
+        <h3 class="menu-h3">> меню</h3></div>
       <transition name="fade">
         <div v-if="isSidebarOpen" class="sidebar-overlay" @click="closeSidebar"></div>
       </transition>
       <transition name="slide">
         <div v-if="isSidebarOpen" class="mobile-sidebar">
           <img src="@/assets/logo.svg" alt="Logo" class="logo" />
-          <a href="#" class="mobile-item">услуги</a>
-          <a href="#" class="mobile-item">контакты</a>
-          <a href="#" class="mobile-item">команда</a>
+          <a @click="handleMenuItemClick('cases', $event)" class="mobile-item">> кейсы</a>
+          <a @click="handleMenuItemClick('offers', $event)" class="mobile-item">> услуги</a>
+          <a @click="handleMenuItemClick('contacts', $event)" class="mobile-item">> контакты</a>
+          <a @click="handleMenuItemClick('team', $event)" class="mobile-item">> команда</a>
           <!-- Добавьте другие пункты меню по необходимости -->
-          <button @click="openModal" class="btn btn-primary">получить консультацию</button>
+          <button  @click="handleTerminalClick('universal'); closeSidebar()" class="btn btn-primary">получить консультацию</button>
         </div>
       </transition>
     </div>
@@ -46,6 +50,12 @@ export default {
       isSidebarOpen: false,
       modalType: '',
       showMyModal: false,
+      sections: {
+        'cases': 'cases',
+        'offers': 'offers',
+        'contacts': 'contacts',
+        'team': 'team',
+      },
     };
   },
   methods: {
@@ -54,6 +64,17 @@ export default {
     },
     toggleSidebar() {
       this.isSidebarOpen = !this.isSidebarOpen;
+    },
+    handleMenuItemClick(section, event) {
+      const sectionId = this.sections[section];
+      this.scrollToSection(sectionId);
+      this.closeSidebar();
+    },
+    scrollToSection(section) {
+      const element = document.getElementById(section);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     },
     closeSidebar() {
       this.isSidebarOpen = false;
@@ -144,19 +165,49 @@ export default {
 </script>
 
 <style scoped>
+.menu-h3 {
+  text-align: center;
+  margin: 0;
+  color: #274c77;
+  font-weight: 600;
+}
+.slide-enter-active,
+.slide-leave-active
+{
+  transition: transform 0.2s ease;
+}
+
+.slide-enter-from,
+.slide-leave-to {
+  transform: translateX(-100%);
+  transition: all 150ms ease-in 0s
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
 * {
   font-family: Point, sans-serif;
 }
 .navbar-mobile {
+  border-top: 2px solid rgba(39, 76, 119, 0.1);
+  box-shadow: 0px 10px 52px rgba(39, 76, 119, 0.3);
   height: 4rem;
   position: fixed;
+  bottom:0;
+  gap: 1rem;
   z-index: 99999999;
-  background-color: rgba(231, 236, 239, 0.81);
+  background-color: rgba(231, 236, 239, 0.8);
   backdrop-filter: blur(20px);
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
 }
 /* Стили по необходимости */
 .logo {
@@ -170,13 +221,15 @@ export default {
 /* Дополнительные стили для мобильной версии */
 .burger-icon {
   font-size: 20px;
+  font-weight: 800;
+  color: #274c77;
   cursor: pointer;
 }
 
 .sidebar-overlay {
   position: fixed;
-  top: 0;
   left: 0;
+  bottom: 0;
   width: 100%;
   height: 100vh;
   background: rgba(0, 0, 0, 0.5);
@@ -187,28 +240,20 @@ export default {
 .mobile-sidebar {
   position: fixed;
   font-size: 2rem;
-  top: 0;
   left: 0;
+  bottom:0;
+  gap: 1rem;
   display: flex;
   width: 80%;
   height: 100vh;
   background: #e7ecef;
+  padding: 1rem;
   z-index: 2;
-  padding: 20px;
   overflow-y: auto;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-end;
-}
-
-.fade-enter-active, .fade-leave-active, .slide-enter-active, .slide-leave-active {
-  transition: opacity 0.5s, transform 0.5s;
-}
-
-.fade-enter, .fade-leave-to, .slide-enter, .slide-leave-to {
-  opacity: 0;
-  transform: translateX(-100%);
+  justify-content: center;
 }
 .desktop-item {
   background-color: transparent;
@@ -245,6 +290,7 @@ export default {
   border: none;
   color: white;
   font-size: 1rem;
+  margin-top: 1rem;
   align-items: center;
   display: flex;
 }
@@ -252,10 +298,11 @@ export default {
   background-color: #274c77;
 }
 .mobile-item {
-  background-color: transparent;
-  border-bottom: 2px solid #274c77;
   color: #274c77;
   padding-bottom: 1rem;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  font-family: "Ubuntu Mono", monospace;
   margin-top: 1rem;
   width: 100%;
   text-decoration: none;

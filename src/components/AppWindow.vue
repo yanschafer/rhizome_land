@@ -5,13 +5,16 @@
     <div class="overlay animate__animated animate__fadeIn animate__faster" @click="closeModal"></div>
     <div class="modal-content animate__animated animate__backInUp animate__faster">
       <!-- Условие для выбора контента в зависимости от modalType -->
-      <template v-if="modalType === 'dark'">
+      <template v-if="modalType === 'dark'" id="dark">
         <div class="container terminal-dark" >
           <div class="row terminal-header-dark">
-            <div class="terminal-buttons-row">
-              <div @click="closeModal" class="red"><div class="test">X</div></div>
+            <div class="terminal-buttons-row desktop">
+              <div @click="closeModal" class="red"><div class="cross">X</div></div>
               <div class="yellow"></div>
               <div class="green"></div>
+            </div>
+            <div class="terminal-buttons-row mobile">
+              <div @click="closeModal" class="red-mobile"><div class="cross">X</div></div>
             </div>
             <div class="appname-dark">
               <span>полный цикл</span>
@@ -69,7 +72,7 @@
                 </div>
                 <div class="step-card-dark">
                   <IconSignature  data-aos="fade-up" color="#3987da" :size="50" stroke-width="2" />
-                  <p class="terminal-text-dark" style="margin-top: 1rem; font-size: 1.3rem;">
+                  <p class="terminal-text-dark">
                     Согласование ТЗ и заключение договора
                   </p>
                 </div>
@@ -77,13 +80,13 @@
               <div class="cards-row">
                 <div class="step-card-dark">
                   <IconReceipt2  data-aos="fade-up" color="#3987da" :size="50" stroke-width="2 " />
-                  <p class="terminal-text-dark" style="margin-top: 1rem; font-size: 1.3rem;">
+                  <p class="terminal-text-dark">
                     Предоплата и последовательная разработка
                   </p>
                 </div>
                 <div class="step-card-dark">
                   <IconThumbUp  data-aos="fade-up" color="#3987da" :size="50" stroke-width="2" />
-                  <p class="terminal-text-dark" style="margin-top: 1rem; font-size: 1.3rem;">
+                  <p class="terminal-text-dark">
                     Сдача проекта и завершение обязательств
                   </p>
                 </div>
@@ -98,39 +101,39 @@
                   </div>
                   <div class="step-card-dark">
                     <IconSignature  data-aos="fade-up" color="#3987da" :size="50" stroke-width="2" />
-                    <p class="terminal-text-dark" style="margin-top: 1rem; font-size: 1.3rem;">
+                    <p class="terminal-text-dark">
                       Согласование ТЗ и заключение договора
                     </p>
                   </div>
                   <div class="step-card-dark">
                     <IconReceipt2  data-aos="fade-up" color="#3987da" :size="50" stroke-width="2 " />
-                    <p class="terminal-text-dark" style="margin-top: 1rem; font-size: 1.3rem;">
+                    <p class="terminal-text-dark" >
                       Предоплата и последовательная разработка
                     </p>
                   </div>
                   <div class="step-card-dark">
                     <IconThumbUp  data-aos="fade-up" color="#3987da" :size="50" stroke-width="2" />
-                    <p class="terminal-text-dark" style="margin-top: 1rem; font-size: 1.3rem;">
+                    <p class="terminal-text-dark">
                       Сдача проекта и завершение обязательств
                     </p>
                   </div>
               </div>
             </template>
             <template v-else-if="currentContent === 'feedback'">
-              <form class="animate__animated animate__fadeInUp form-wrapper" @submit.prevent="submitFeedbackForm">
-                <button @click="goBack" class="back-btn-dark animate__animated animate__fadeInUp"><IconArrowLeft  data-aos="fade-up" color="#3987da" :size="20" stroke-width="2" /></button>
-                <h1 class="form-heading-dark animate__animated animate__fadeInUp">Вводная консультация</h1>
-                <p class="form-subtext-dark animate__animated animate__fadeInUp">Команда студии Rhizome в данном формате сотрудничества закрывает все процессы: product-management, дизайн и разработка. Вы получаете готовый IT-продукт</p>
+              <form class="animate__animated animate__fadeIn form-wrapper" @submit.prevent="submitFeedbackForm">
+                <button @click="goBack" class="back-btn-dark animate__animated animate__fadeIn"><IconArrowLeft  data-aos="fade-up" color="#3987da" :size="20" stroke-width="2" /></button>
+                <h1 class="form-heading-dark animate__animated animate__fadeIn">Вводная консультация</h1>
+                <p class="form-subtext-dark animate__animated animate__fadeIn">Команда студии Rhizome в данном формате сотрудничества закрывает все процессы: product-management, дизайн и разработка. Вы получаете готовый IT-продукт</p>
                 <div class="container form-container">
-                  <div class="form-col1 animate__animated animate__fadeInUp">
+                  <div class="form-col1 animate__animated animate__fadeIn">
                     <label for="fullName" class="label-dark">ФИО:</label>
-                    <input type="text" v-model="reqData.name" id="fullName" name="fullName" required>
+                    <input style="background: #212121; border: 2px solid #3987da; color: white;" type="text" v-model="reqData.name" id="fullName" name="fullName" required>
 
                     <label for="phoneNumber" class="label-dark">Номер телефона:</label>
-                    <input type="tel" v-model="reqData.phone" id="phoneNumber" name="phoneNumber" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" placeholder="Например, 123-45-678" required>
+                    <input style="background: #212121; border: 2px solid #3987da; color: white;" type="tel" v-model="reqData.phone" id="phoneNumber" name="phoneNumber" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" placeholder="Например, 123-45-678" required>
 
                     <label for="email" class="label-dark">Email:</label>
-                    <input type="email" v-model="reqData.email"  id="email" name="email" required>
+                    <input style="background: #212121; border: 2px solid #3987da; color: white;" type="email" v-model="reqData.email"  id="email" name="email" required>
 
                     <label class="label-dark">Предпочтительный способ связи:</label>
 <!--                    <div class="radio-row">-->
@@ -144,14 +147,16 @@
                       </a-radio-group>
                     </div>
                   </div>
-                  <div class="form-col2 animate__animated animate__fadeInUp">
+                  <div class="form-col2 animate__animated animate__fadeIn">
                     <label for="comments" class="label-dark">Комментарии:</label>
-                    <textarea v-model="reqData.context" id="comments" name="comments" rows="4"></textarea>
+                    <textarea style="background: #212121; border: 2px solid #3987da; color: white;" v-model="reqData.context" id="comments" name="comments" rows="4"></textarea>
                     <input type="submit" value="Отправить" @click="send">
                   </div>
-
                 </div>
               </form>
+              <div class="disclaimer-row">
+                <p class="disclaimer-light">Отправляя заявку, вы соглашаетесь с <a href="#">политикой конфиденциальности</a></p>
+              </div>
             </template>
           </div>
         </div>
@@ -159,10 +164,13 @@
       <template v-else-if="modalType === 'white'">
         <div class="container terminal-white" >
           <div class="row terminal-header-white">
-            <div class="terminal-buttons-row">
-              <div @click="closeModal" class="red"><div class="test">X</div></div>
+            <div class="terminal-buttons-row desktop">
+              <div @click="closeModal" class="red"><div class="cross">X</div></div>
               <div class="yellow"></div>
               <div class="green"></div>
+            </div>
+            <div class="terminal-buttons-row mobile">
+              <div @click="closeModal" class="red-mobile"><div class="cross">X</div></div>
             </div>
             <div class="appname-light">
               <span>отдельные решения</span>
@@ -175,11 +183,11 @@
             <template v-if="currentContent === 'light-form-content'">
               <div class="modal-row">
                 <div class="modal-col-1">
-                  <h1 class="h1-light animate__animated animate__fadeInUp">Создание отдельных решений, доработка и сопровождение проектов</h1>
-                  <p class="terminal-text-light animate__animated animate__fadeInUp">Доработка и сопровождение веб-сайтов, приложений, чат-ботов, и процессов product-managment</p>
+                  <h1 class="h1-light animate__animated animate__fadeIn">Создание отдельных решений, доработка и сопровождение проектов</h1>
+                  <p class="terminal-text-light animate__animated animate__fadeIn">Доработка и сопровождение веб-сайтов, приложений, чат-ботов, и процессов product-managment</p>
                 </div>
                 <div class="modal-col-2">
-                  <a-button class="btn btn-primary animate__animated animate__fadeInUp" type="primary" @click="showFeedbackForm">привлечь команду</a-button>
+                  <a-button class="btn btn-primary animate__animated animate__fadeIn" type="primary" @click="showFeedbackForm">привлечь команду</a-button>
                 </div>
               </div>
               <Vue3Marquee :pause-on-hover="true" :clone="true" class="container offers-container">
@@ -207,31 +215,57 @@
                   <h2 class="h2-light">Сопровождение</h2>
                 </div>
               </Vue3Marquee>
-              <div class="container steps-container">
-                <div class="cards-row">
-                  <div class="step-card-light animate__animated animate__fadeInUp">
+              <div class="container steps-container desktop">
+                  <div class="step-card-light animate__animated animate__fadeIn">
                     <IconCalculator  data-aos="fade-up" color="#274c77" :size="50" stroke-width="2" />
                     <p class="terminal-text-light" style="margin-top: 1rem;">
                       Вводная бесплатная консультация
                     </p>
                   </div>
-                  <div class="step-card-light animate__animated animate__fadeInUp">
+                  <div class="step-card-light animate__animated animate__fadeIn">
                     <IconSignature  data-aos="fade-up" color="#274c77" :size="50" stroke-width="2" />
-                    <p class="terminal-text-light" style="margin-top: 1rem; font-size: 1.3rem;">
+                    <p class="terminal-text-light">
+                      Формирование оптимального состава команды на аутсорсинг
+                    </p>
+                  </div>
+                  <div class="step-card-light animate__animated animate__fadeIn">
+                    <IconReceipt2  data-aos="fade-up" color="#274c77" :size="50" stroke-width="2 " />
+                    <p class="terminal-text-light">
+                      Предоплата и последовательная разработка
+                    </p>
+                  </div>
+                  <div class="step-card-light animate__animated animate__fadeIn">
+                    <IconThumbUp  data-aos="fade-up" color="#274c77" :size="50" stroke-width="2" />
+                    <p class="terminal-text-light">
+                      Сдача проекта и завершение обязательств
+                    </p>
+                  </div>
+              </div>
+              <div class="container steps-container mobile">
+                <div class="cards-row">
+                  <div class="step-card-light animate__animated animate__fadeIn">
+                    <IconCalculator  data-aos="fade-up" color="#274c77" :size="50" stroke-width="2" />
+                    <p class="terminal-text-light" style="margin-top: 1rem;">
+                      Вводная бесплатная консультация
+                    </p>
+                  </div>
+                  <div class="step-card-light animate__animated animate__fadeIn">
+                    <IconSignature  data-aos="fade-up" color="#274c77" :size="50" stroke-width="2" />
+                    <p class="terminal-text-light" >
                       Формирование оптимального состава команды на аутсорсинг
                     </p>
                   </div>
                 </div>
                 <div class="cards-row">
-                  <div class="step-card-light animate__animated animate__fadeInUp">
+                  <div class="step-card-light animate__animated animate__fadeIn">
                     <IconReceipt2  data-aos="fade-up" color="#274c77" :size="50" stroke-width="2 " />
-                    <p class="terminal-text-light" style="margin-top: 1rem; font-size: 1.3rem;">
+                    <p class="terminal-text-light" >
                       Предоплата и последовательная разработка
                     </p>
                   </div>
-                  <div class="step-card-light animate__animated animate__fadeInUp">
+                  <div class="step-card-light animate__animated animate__fadeIn">
                     <IconThumbUp  data-aos="fade-up" color="#274c77" :size="50" stroke-width="2" />
-                    <p class="terminal-text-light" style="margin-top: 1rem; font-size: 1.3rem;">
+                    <p class="terminal-text-light" >
                       Сдача проекта и завершение обязательств
                     </p>
                   </div>
@@ -239,12 +273,12 @@
               </div>
             </template>
             <template v-else-if="currentContent === 'feedback'">
-              <form class="animate__animated animate__fadeInUp form-wrapper" @submit.prevent="submitFeedbackForm">
-                  <button @click="goBackLight" class="back-btn animate__animated animate__fadeInUp"><IconArrowLeft  data-aos="fade-up" color="#274c77" :size="20" stroke-width="2" /></button>
-                  <h1 class="form-heading-light animate__animated animate__fadeInUp">Вводная консультация</h1>
-                  <p class="form-subtext animate__animated animate__fadeInUp">В зависимости от приоритетных задач бизнеса, студия Rhizome предоставляет отдельные единицы команды на аутсорсинг процессов под вашим руководством. Расскажите о себе и ваших целях - и мы свяжемся с вами</p>
+              <form class="animate__animated animate__fadeIn form-wrapper" @submit.prevent="submitFeedbackForm">
+                  <button @click="goBackLight" class="back-btn animate__animated animate__fadeIn"><IconArrowLeft  data-aos="fade-up" color="#274c77" :size="20" stroke-width="2" /></button>
+                  <h1 class="form-heading-light animate__animated animate__fadeIn">Вводная консультация</h1>
+                  <p class="form-subtext animate__animated animate__fadeIn">В зависимости от приоритетных задач бизнеса, студия Rhizome предоставляет отдельные единицы команды на аутсорсинг процессов под вашим руководством. Расскажите о себе и ваших целях - и мы свяжемся с вами</p>
                 <div class="container form-container">
-                  <div class="form-col1 animate__animated animate__fadeInUp">
+                  <div class="form-col1 animate__animated animate__fadeIn">
                     <label for="fullName">ФИО:</label>
                     <input type="text" v-model="reqData.name" id="fullName" name="fullName" required>
 
@@ -266,16 +300,16 @@
                       </a-radio-group>
                     </div>
                     </div>
-                  <div class="form-col2 animate__animated animate__fadeInUp">
+                  <div class="form-col2 animate__animated animate__fadeIn">
                     <label for="comments">Комментарии:</label>
                     <textarea v-model="reqData.context" id="comments" name="comments" rows="4"></textarea>
                     <input type="submit" value="Отправить" @click = "send">
-
-
                   </div>
-
                 </div>
                 </form>
+              <div class="disclaimer-row">
+                <p class="disclaimer">Отправляя заявку, вы соглашаетесь с <a href="#">политикой конфиденциальности</a></p>
+              </div>
             </template>
           </div>
         </div>
@@ -283,10 +317,13 @@
       <template v-else-if="modalType === 'universal'">
         <div class="container terminal-uni" >
           <div class="row terminal-header-white">
-            <div class="terminal-buttons-row">
-              <div @click="closeModal" class="red"><div class="test">X</div></div>
+            <div class="terminal-buttons-row desktop">
+              <div @click="closeModal" class="red"><div class="cross">X</div></div>
               <div class="yellow"></div>
               <div class="green"></div>
+            </div>
+            <div class="terminal-buttons-row mobile">
+              <div @click="closeModal" class="red-mobile"><div class="cross">X</div></div>
             </div>
             <div class="appname-light">
               <span>бесплатная консультация</span>
@@ -327,7 +364,7 @@
                 </div>
               </form>
               <div class="disclaimer-row">
-                <p class="disclaimer">Отправляя заявку, вы соглашаетесь с <a href="#">политикой конфиденциальности</a></p>
+                <p class="disclaimer-dark">Отправляя заявку, вы соглашаетесь с <a href="#">политикой конфиденциальности</a></p>
               </div>
             </template>
           </div>
@@ -438,14 +475,15 @@ export default {
 
 </script>
 <style scoped>
-@media only screen and (max-width: 800px) {
+
+@media only screen and (max-width: 900px) {
   .terminal-text-dark {
     font-size: 1rem!important;
   }
   .terminal-container-dark {
     justify-content: space-between!important;
   }
-  .terminal-container-dark input, textarea {
+  .terminal-container-dark input {
     background-color: #2f2f2f!important;
     color: white!important;
   }
@@ -461,17 +499,26 @@ export default {
     color: white;
   }
 }
-@media only screen and (max-width: 415px) {
+@media only screen and (max-width: 430px) {
+  .social {
+    margin-left: 1rem!important;
+  }
   .terminal-uni {
-    max-width: 90vw!important;
+    min-width: 90vw!important;
   }
   .form-heading-light {
+    font-size: 2rem!important;
+  }
+  .form-heading-dark {
     font-size: 2rem!important;
   }
   .h2 {
     font-size: 1rem!important;
   }
   .card-dark {
+  }
+  .cross {
+    font-size: 0.8rem!important;
   }
   .mobile {
     display: flex!important;
@@ -498,12 +545,19 @@ export default {
   .terminal-container {
     align-items: center!important;
   }
+  .terminal-white {
+    min-width: 90vw!important;
+  }
+  .terminal-dark {
+    min-width: 90vw!important;
+  }
   .card-light {
     min-height: 4rem!important;
   }
   .terminal-container-dark {
     justify-content: space-between!important;
     align-items: center!important;
+    padding:1rem!important;
   }
   .h1-light {
     font-size: 1.5rem!important;
@@ -515,11 +569,15 @@ export default {
   .terminal-text-light {
     font-size: 1rem!important;
   }
+  .form-subtext {
+    font-size: 0.8rem!important;
+  }
   .form-subtext-dark {
     font-size: 1rem!important;
   }
   .form-container {
-    gap: 1rem!important;
+    flex-direction: column!important;
+    gap: 0!important;
   }
   .h1-dark {
     font-weight: 700!important;
@@ -534,8 +592,7 @@ export default {
 .terminal-container-dark {
   justify-content: space-between!important;
 }
-.terminal-container-dark input, textarea {
-  background-color: #2f2f2f!important;
+.terminal-container input, textarea {
   color: white!important;
 }
 .terminal-container-dark input[type="submit"] {
@@ -550,10 +607,10 @@ export default {
   color: white;
 }
 .desktop {
-  display: flex!important;
+  display: flex;
 }
 .mobile {
-  display: none!important;
+  display: none;
 }
 .radio-row {
   display: flex;
@@ -577,12 +634,24 @@ export default {
   text-align: center;
   opacity: 0.4;
 }
+a {
+  color: #3987da;
+}
+.disclaimer-light {
+  color: white;
+  text-align: center;
+  opacity: 0.4;
+}
+a.disclaimer-light {
+  color: black;
+}
 .email-label {
   text-align: center;
 }
 .form-container {
   display: flex;
   width: 100%;
+  gap: 2rem;
   flex-direction: row;
   justify-content: space-around;
 }
@@ -665,12 +734,14 @@ input[type="submit"]:hover {
   border: 2px solid #274c77;
   border-radius: 1rem;
   transition: all 0.2s ease-in-out;
+  display: flex;
 }
 .back-btn-dark {
   background-color: transparent;
   border: 2px solid #3987da;
   border-radius: 1rem;
   transition: all 0.2s ease-in-out;
+  display: flex;
 }
 .back-btn-dark:hover {
   background-color: transparent;
@@ -714,7 +785,7 @@ input[type="submit"]:hover {
 .form-heading-light {
   color: #274c77;
   margin-top: 2rem;
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 700;
   font-family: Point, sans-serif;
 }
@@ -797,8 +868,33 @@ font-size: 2.5rem;
   background-color: #ad2923;
   cursor: pointer;
 }
-.steps-container {
+.red-mobile {
   display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #FF544D;
+  border: 1px solid #DA3C37;
+  border-radius: 50%;
+  color: #DA3C37;
+  font-family: Point, sans-serif;
+  padding: 0;
+  line-height: 1.3;
+  font-weight: 800;
+  text-align: center;
+  font-size: 0.8rem;
+  width: 20px;
+  height: 20px;
+  transition: all 0.2s ease-in-out;
+}
+.red-mobile:hover {
+  background-color: #ad2923;
+  cursor: pointer;
+}
+#dark .terminal-dark {
+  min-width: auto!important;
+}
+.steps-container {
   flex-direction: row;
   width: 100%;
   justify-content: space-evenly;
@@ -828,7 +924,6 @@ font-size: 2.5rem;
   border: 2px solid #274c77;
 }
 .terminal-buttons-row {
-  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 0.4rem;
@@ -852,24 +947,11 @@ font-size: 2.5rem;
   align-self: center;
 }
 .appname-light {
+  font-size: 0.7rem;
   width: 100%;
   max-width: 44rem;
   color: #1e1e1e;
   background-color: #eaeaea;
-  border-radius: 0.3rem;
-  padding-top: 0.2rem;
-  padding-bottom: 0.2rem;
-  font-family: 'Ubuntu Mono', monospace;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  align-self: center;
-}
-.appname-dark {
-  width: 100%;
-  max-width: 44rem;
-  color: #1a1a1a;
-  background-color: #1e1e1e;
   border-radius: 0.3rem;
   padding-top: 0.2rem;
   padding-bottom: 0.2rem;
@@ -921,7 +1003,11 @@ font-size: 2.5rem;
 }
 .h2-light {
   color: #274c77;
-
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 700;
+  text-transform: lowercase;
+  font-family: Point, sans-serif;
 }
 .card-light {
   background-color: #f8f8f8;
@@ -933,7 +1019,7 @@ font-size: 2.5rem;
   align-items: center;
   align-self: center;
   justify-content: center;
-  min-height: 6rem;
+  min-height: 4rem;
   border-radius: 1.3rem;
   border: 2px solid #274c77;
 }
@@ -957,7 +1043,7 @@ font-size: 2.5rem;
 .terminal-container-dark {
   background-color: rgba(31, 31, 31, 0.77);
   height: 100%;
-  max-height: 20rem;
+  gap: 1rem;
   justify-content: flex-start;
   display: flex;
   flex-direction: column;
@@ -968,7 +1054,6 @@ font-size: 2.5rem;
   border-radius: 0rem 0rem 1rem 1rem;
   border: 1px solid #3c3c3c;
   border-top: 0;
-  min-height: 90vh;
 }
 .terminal-white {
   box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
@@ -976,9 +1061,8 @@ font-size: 2.5rem;
   border-radius: 1rem;
   height: 100%;
   width: 100%;
-  min-width: 80vw;
+  min-width: 50vw;
   max-width: 90vw;
-  min-height: 90vh;
 }
 .terminal-uni {
   box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
@@ -986,8 +1070,7 @@ font-size: 2.5rem;
   border-radius: 1rem;
   height: 100%;
   width: 100%;
-  min-width: 30vw;
-  max-width: 45rem;
+  min-width: 40rem;
   min-height: 90vh;
 }
 .terminal-dark {
@@ -995,10 +1078,9 @@ font-size: 2.5rem;
   border-radius: 1rem;
   height: 100%;
   width: 100%;
-  min-width: 80vw;
+  min-width: 40rem;
   max-width: 90vw;
   min-height: 90vh;
-
 }
 .offers-container {
   height: 100%;
@@ -1021,16 +1103,16 @@ font-size: 2.5rem;
   color: white;
   font-family: Point, sans-serif;
   font-weight: 400;
-  font-size: 1.5rem;
+  font-size: 1rem;
   width: 100%;
   max-width: 54rem;
 
 }
-.terminal-text-light {
+:deep(.terminal-text-light) {
   color: #1e1e1e;
   font-family: Point, sans-serif;
   font-weight: 400;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   width: 100%;
   max-width: 54rem;
 }
@@ -1059,6 +1141,9 @@ font-size: 2.5rem;
 
 .modal-content {
   z-index: 9999999;
+  display: flex;
+  width: min-content;
+  max-height: 95vh;
 }
 :deep(.ant-steps-item-title) {
   color: white!important;
@@ -1083,9 +1168,11 @@ font-size: 2.5rem;
 .ant-radio-button-wrapper:hover {
   color: #274c77;
 }
-.test{
-  font-size: .6rem;
+.cross{
+  font-size: 0.6rem;
   color: black;
+  margin: 0;
+  line-height: 0;
 }
 </style>
 

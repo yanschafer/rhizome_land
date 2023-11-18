@@ -9,8 +9,8 @@
           <a-button class="btn btn-primary" type="primary" @click="handleTerminalClick('universal')">Получить консультацию</a-button>
         </div>
       </div>
-    </section>
-    <section class="section2">
+  </section>
+  <section class="section2">
       <div class="container element" data-aos="fade-up">
         <h1 class="main-heading heading-dark" data-aos="fade-up">Наши компетенции</h1>
         <p data-aos="fade-up" class="p p-dark">Cтудия <span style="font-weight: 600">Rhizome</span> помогает компаниям, готовым к масштабированию, разработать собственные системы управления бизнес-процессами и коммуникации с клиентами</p>
@@ -45,12 +45,12 @@
           <h1 data-aos="fade-up" class="main-heading heading-dark">Рекрутинговые агентства</h1>
         </div>
         <div class="row buttons-row" data-aos="fade-up">
-          <a-button class="btn btn-outlined-dark">Кейсы Rhizome</a-button>
+          <a-button href="#cases" class="btn btn-outlined-dark">Кейсы Rhizome</a-button>
           <a-button class="btn btn-primary-dark" type="primary" @click="handleTerminalClick('universal')">Получить консультацию</a-button>
         </div>
       </div>
     </section>
-    <section class="section3" style="display: flex" id="cases" ref="casesSection">
+  <section class="section3" style="display: flex" id="cases" ref="casesSection">
       <div class="separated-text-wrapper">
         <h1 class="h1"><glitched-writer :options="textGlitchOptions" class="separated-text" text="Кейсы" appear preset="neo" /><span class="rhizome"> Rhizhome</span></h1>
       </div>
@@ -69,7 +69,9 @@
             </div>
           </div>
           <div class="card" data-aos="fade-down">
-            <video-player :options="videoOptions" />
+            <div class="video-wrapper">
+              <video-player :options="videoOptions" />
+            </div>
             <div class="container description-container">
             <h3 class="h3">Система диагностики психологического состояния сотрудников: startup</h3>
             <p class="subtext-small">Экосистема для снижения текучести кадров и расходов компании более чем на 30% за счет работы с психологическим состоянием сотрудников.</p>
@@ -83,7 +85,9 @@
         </div>
         <div class="row cases-row">
           <div class="card" data-aos="fade-down">
+            <div class="video-wrapper">
             <video-player :options="videoOptions2" />
+            </div>
             <div class="container description-container">
             <h3 class="h3">Информационная система для медицинской клиники</h3>
             <p class="subtext-small">Повышение выручки медицинской клиники на 5,5% за счет внедрения информационной системы</p>
@@ -108,7 +112,9 @@
           </div>
         </div>
         <div class="card" data-aos="fade-up">
+          <div class="video-wrapper">
           <video-player :options="videoOptions3" />
+          </div>
           <div class="container description-container">
           <h3 class="h3">Подборка из 3-х кейсов по дизайну и веб-разработке</h3>
           <p class="subtext-small">Разработка полноценного сайта за 2 для Академии Цифровых Технологий.<br>
@@ -118,9 +124,9 @@
         </div>
       </div>
     </section>
-    <section class="section4">
+  <section id="offers" class="section4">
       <div class="separated-text-wrapper">
-        <h1 class="h1" data-aos="fade-up">Услуги для вашего бизнеса</h1>
+        <h1 class="h1" data-aos="fade-up">Услуги для<br>вашего бизнеса</h1>
       </div>
       <div class="row row-offer">
         <div class="container terminal-dark" @click="handleTerminalClick('dark')" >
@@ -134,7 +140,7 @@
               <span></span>
             </div>
           </div>
-          <div class="container terminal-container-dark">
+          <div class="container terminal-container-dark" @click="handleTerminalClick('dark')">
             <h1 v-if="showTerminalContent && !showGlitchWriter" class="terminal-heading-dark"><IconArrowBadgeRightFilled  data-aos="fade-up" color="limegreen" :size="20" stroke-width="2" /> Полный цикл разработки</h1>
             <p v-if="showTerminalContent && !showGlitchWriter" class="terminal-text-dark">Комплексный product-management и разработка IT-решений для вашего бизнеса <span class="cursor-small">|</span></p>
             <span class="launch-text-dark" v-if="showGlitchWriterDark" >>> <glitched-writer text="инициализация кода" appear preset="neo" /></span>
@@ -151,7 +157,7 @@
               <span></span>
             </div>
           </div>
-          <div class="container terminal-container">
+          <div class="container terminal-container" @click="handleTerminalClick('white')">
             <h1 v-if="showTerminalContent && !showGlitchWriter" class="terminal-heading-light"><IconArrowBadgeRightFilled data-aos="fade-up" color="limegreen" :size="20" stroke-width="2" /> Создание отдельных решений, доработка и сопровождение проектов</h1>
             <p v-if="showTerminalContent && !showGlitchWriter" class="terminal-text-light">Аутсорсинг единиц команды для приоритетных целей бизнеса <span class="cursor-small">|</span></p>
             <span v-if="showGlitchWriterWhite" class="launch-text-light" >>> <glitched-writer text="инициализация кода" appear preset="neo" /></span>
@@ -159,7 +165,7 @@
         </div>
       </div>
     </section>
-    <section class="section5" ref="section5">
+  <section class="section5" ref="section5">
       <div class="row counter-row-1" v-if="shouldShowCounters">
         <div class="col">
           <div class="row counter-row">
@@ -184,6 +190,69 @@
         <a-button class="btn btn-primary" type="primary" @click="handleTerminalClick('universal')">Получить консультацию</a-button>
       </div>
     </section>
+  <section  id="team" class="section6">
+    <div class="separated-text-wrapper">
+      <h1 class="h1" data-aos="fade-up">Команда</h1>
+    </div>
+    <div class="profile-container">
+
+    </div>
+  </section>
+  <section id="contacts" class="footer-section">
+    <!--    Footer area-->
+    <div class="footer desktop">
+      <div class="e-mail-row">
+        <img class="logo-footer" src="@/assets/logo.svg" />
+      </div>
+      <div class="row e-mail-row">
+        <a class="mail-link" href="mailto:info@rhizomedev.com">info@rhizomedev.com</a>
+      </div>
+      <div class="row info-row">
+        <div class="col-1">
+          <span>Юридический адрес</span>
+          <span style="font-weight: 600">Rhizhome | 2023</span>
+        </div>
+        <div class="col-2">
+          <span>/</span>
+          <a href="#"><span>Политика обработки персональных данных</span></a>
+        </div>
+        <div class="col-3">
+          <a href="#"><span>Telegram</span></a>
+          <a href="#"><span>Whatsapp</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-footer mobile">
+      <div class="e-mail-row-mobile">
+        <div class="col-logo">
+          <img class="logo-footer" src="@/assets/logo.svg" />
+        </div>
+        <div class="col-links">
+          <a href="#" class="brand-icon">
+            <IconBrandTelegram :size="48"></IconBrandTelegram>
+          </a>
+          <a href="#" class="brand-icon">
+            <IconBrandWhatsapp :size="48"></IconBrandWhatsapp>
+          </a>
+        </div>
+      </div>
+      <div class="row e-mail-row">
+
+        <a class="mail-link" href="mailto:info@rhizomedev.com">info@rhizomedev.com</a>
+      </div>
+      <div class="row info-row">
+        <div class="col-1">
+          <span>Юридический адрес</span>
+          <span style="font-weight: 600">Rhizhome | 2023</span>
+        </div>
+        <div class="col-2">
+          <span>/</span>
+          <a href="#"><span>Политика обработки персональных данных</span></a>
+        </div>
+      </div>
+      <div class="footer-placeholder"></div>
+    </div>
+  </section>
 
   <app-window :currentContent="'light-form-content'" :is-open="showMyModal" @close="closeMyModal" :modalType="modalType" />
   </template>
@@ -194,7 +263,7 @@ import AppWindow from '@/components/AppWindow.vue';
 import {Button} from "ant-design-vue";
 import AOS from "aos";
 import VideoPlayer from '@/components/VideoPlayer.vue';
-import { IconHomeDollar, IconSchool, IconHeartHandshake, IconArrowBadgeRightFilled } from "@tabler/icons-vue";
+import { IconBrandWhatsapp, IconBrandTelegram, IconHomeDollar, IconSchool, IconHeartHandshake, IconArrowBadgeRightFilled } from "@tabler/icons-vue";
 import GlitchedWriter from 'vue-glitched-writer'
 import EasterEgg from "@/components/EasterEgg.vue";
 
@@ -212,7 +281,7 @@ export default {
     next();
   },
   emits: ["open-modal"],
-  components: { EasterEgg, AppWindow, Button, VideoPlayer, IconHomeDollar, IconSchool, IconArrowBadgeRightFilled, IconHeartHandshake, GlitchedWriter},
+  components: { IconBrandTelegram, IconBrandWhatsapp, EasterEgg, AppWindow, Button, VideoPlayer, IconHomeDollar, IconSchool, IconArrowBadgeRightFilled, IconHeartHandshake, GlitchedWriter},
   watch: {
     $route(to, from) {
       if (this.isContentChanged(to, from) && this.animationsPlayed) {
@@ -294,7 +363,7 @@ export default {
               }
             }
           }, 1000);
-        }, type === 'universal' ? 0 : 3000);
+        }, type === 'universal' ? 0 : 1800);
       } else {
         // Если тип universal, отображаем модальное окно сразу без задержки
         this.modalType = type;
@@ -350,9 +419,19 @@ export default {
       videoOptions: {
         autoplay: 'muted',
         loop: true,
+        preload: 'auto',
         controls: false,
-        width: 650,
-
+        responsive: true,
+        fluid: true,
+        breakpoints: {
+          tiny: 200,
+          xsmall: 200,
+          small: 200,
+          medium: 200,
+          large: 200,
+          xlarge: 200,
+          huge: 200
+        },
         sources: [{
           src: '/video.mp4',
           type: 'video/mp4'
@@ -362,7 +441,19 @@ export default {
         autoplay: 'muted',
         loop: true,
         controls: false,
+        fill: true,
         width: 650,
+        responsive: true,
+        fluid: true,
+        breakpoints: {
+          tiny: 200,
+          xsmall: 200,
+          small: 200,
+          medium: 200,
+          large: 200,
+          xlarge: 200,
+          huge: 200
+        },
         preload: 'auto',
         sources: [{
           src: '/video2.mp4',
@@ -374,7 +465,19 @@ export default {
         loop: true,
         controls: false,
         width: 650,
+        fill: true,
         preload: 'auto',
+        responsive: true,
+        fluid: true,
+        breakpoints: {
+          tiny: 200,
+          xsmall: 200,
+          small: 200,
+          medium: 200,
+          large: 200,
+          xlarge: 200,
+          huge: 200
+        },
         sources: [{
           src: '/video3.mp4',
           type: 'video/mp4'
@@ -406,7 +509,72 @@ export default {
 </script>
 
 <style scoped>
-@media only screen and (max-width: 415px) {
+.footer-section {
+  width: 100%;
+}
+.footer {
+  padding: 3rem;
+  height: 20rem;
+  background-color: white!important;
+  flex-direction: column;
+}
+.e-mail-row {
+  width: 100%;
+  text-align: left;
+  justify-content: flex-start!important;
+  font-family: Point, sans-serif;
+  font-size: 4rem;
+  font-weight: 600;
+  color: #3a3a3a;
+}
+.info-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between!important;
+  align-items: center!important;
+  font-family: Point, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 4rem;
+  color: #3a3a3a;
+}
+.col-1, .col-2, .col-3 {
+  display: flex;
+  flex-direction: column;
+}
+.col-3 {
+  align-items: flex-end;
+}
+.col-1 {
+  align-items: flex-start;
+  opacity: 0.4;
+}
+.col-2 {
+  align-items: center;
+}
+a {
+  color: #274c77;
+}
+@media (max-width: 575.98px) {
+  .col-2 {
+    text-align: center;
+  }
+  .mobile {
+    display: flex!important;
+  }
+  .desktop {
+    display: none!important;
+  }
+  .mail-link {
+    font-size: 1rem!important;
+    margin-top: 1rem!important;
+  }
+  .info-row {
+    margin: 0!important;
+  }
+  .element {
+    border-radius: 30px!important;
+  }
   .container-fluid {
     padding: 1rem!important;
   }
@@ -462,6 +630,26 @@ export default {
     font-size: 3rem!important;
   }
 }
+
+@media (max-width: 767.98px) {
+  .container-fluid {
+    padding: 1rem!important;
+  }
+  .footer {
+    padding: 1rem!important;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .container-fluid {
+    padding: 1rem!important;
+  }
+}
+
+@media (max-width: 1199.98px) { }
+
+@media (max-width: 1399.98px) { }
+
 .btn {
   padding: 1.3rem;
   font-size: 1.2rem;
@@ -490,11 +678,24 @@ export default {
   border: 2px solid #6096ba;
   color: #6096ba;
 }
+.e-mail-row-mobile {
+  display: flex;
+  justify-content: space-between;
+}
+.col-links {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.brand-icon {
+  font-size: 2rem;
+}
 .btn-outlined:hover {
   background-color: transparent;
   border: 2px solid #6096ba;
   color: #6096ba;
 }
+.mobile-footer
 .btn-outlined {
   background-color: transparent;
   border: 2px solid #274c77;
@@ -599,6 +800,9 @@ padding: 5rem;
   padding: 5rem;
   position: relative;
 }
+.footer-placeholder {
+  height: 3rem;
+}
 .card {
   display: flex;
   flex-direction: column;
@@ -675,6 +879,12 @@ p {
   width: 100%;
   align-items: center;
 }
+.desktop {
+  display: flex;
+}
+.mobile {
+  display: none;
+}
 .section5 {
   padding-top: 3rem;
   padding-bottom: 3rem;
@@ -684,6 +894,12 @@ p {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+}
+.mobile-footer {
+  background-color: white;
+  padding: 2rem;
+  flex-direction: column;
+  width: 100%;
 }
 .section4 {
   padding-top: 4rem;
@@ -717,7 +933,9 @@ p {
 }
 .video-wrapper {
   width: 100%;
-  max-width: 10rem;
+  max-width: 37rem;
+  background: transparent;
+  border: none!important;
 }
 .description-container {
   width: 100%;
@@ -856,6 +1074,7 @@ p {
   box-shadow: 0px 4px 40px 0px rgba(34, 57, 108, 0.48);
   cursor: pointer;
 }
+
 .terminal-white:hover {
   margin-top: -10px;
   transition: all 0.2s ease-in-out;
@@ -922,4 +1141,8 @@ p {
 
 </style>
 <style>
+html {
+  width: 100%;
+  max-width: 100vw;
+}
 </style>
